@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,21 +33,40 @@ namespace ConsoleUI
             */
 
             // Create a list of Vehicle called vehicles
+            var vehicles = new List<Vehicle>();
 
             /*
              * Create 4 instances: 1 Car, 1 Motorcycle, and then 2 instances of type Vehicle (use explicit typing) but use constuctors from derived classes
              * - new it up as one of each derived class
              * Set the properties with object initializer syntax
              */
-
+            Car delorean = new Car("1983", "DMC", "DeLorean", 2);
+            Motorcycle harley = new Motorcycle("1992", "Harley Davidson", "Junker", "Chopper");
+            Vehicle relic = new Car();
+            Vehicle dunebuggy = new Car("2000", "Custom", "Mud Buggy", 0);
             /*
              * Add the 4 vehicles to the list
              * Using a foreach loop iterate over each of the properties
              */
+            vehicles.Add(delorean);
+            vehicles.Add(relic);
+            vehicles.Add(dunebuggy);
+            vehicles.Add(harley);
 
+            foreach (Vehicle x in vehicles) { 
+                Console.WriteLine($"{x.Year} {x.Make} {x.Model}. \n");
+                }
             // Call each of the drive methods for one car and one motorcycle
 
-            #endregion            
+            relic.DriveVirtual(relic);
+            Console.WriteLine("\n");
+            delorean.DriveAbstract(delorean);
+            Console.WriteLine("\n");
+            harley.DriveVirtual(harley);
+            Console.WriteLine("\n");
+            harley.DriveAbstract(harley);
+
+                #endregion
             Console.ReadLine();
         }
     }
